@@ -14,7 +14,7 @@ defmodule DHT.Mixfile do
 
   def application do
     [applications: [:logger],
-     mod: {DHT, []}]
+     mod: []]
   end
 
   defp deps do

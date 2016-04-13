@@ -1,19 +1,10 @@
 defmodule DHT do
-  use Application
+  @moduledoc """
+  Provides function for reading data from the DHT11 sensor.
+  """
 
-  # See http://elixir-lang.org/docs/stable/elixir/Application.html
-  # for more information on OTP Applications
-  def start(_type, _args) do
-    import Supervisor.Spec, warn: false
+  defdelegate read(pin), to: DHT.Sensor
 
-    children = [
-      # Define workers and child supervisors to be supervised
-      # worker(DHT.Worker, [arg1, arg2, arg3]),
-    ]
-
-    # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
-    # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: DHT.Supervisor]
-    Supervisor.start_link(children, opts)
-  end
+  defdelegate stream(pin), to: DHT.Sensor
+  defdelegate stream(pin, interval), to: DHT.Sensor
 end
